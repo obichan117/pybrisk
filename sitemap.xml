@@ -5,27 +5,27 @@
          <lastmod>2026-03-12</lastmod>
     </url>
     <url>
-         <loc>https://obichan117.github.io/pybrisk/authentication/</loc>
-         <lastmod>2026-03-12</lastmod>
-    </url>
-    <url>
-         <loc>https://obichan117.github.io/pybrisk/configuration/</loc>
-         <lastmod>2026-03-12</lastmod>
-    </url>
-    <url>
-         <loc>https://obichan117.github.io/pybrisk/endpoints/</loc>
-         <lastmod>2026-03-12</lastmod>
-    </url>
-    <url>
-         <loc>https://obichan117.github.io/pybrisk/market/</loc>
-         <lastmod>2026-03-12</lastmod>
-    </url>
-    <url>
          <loc>https://obichan117.github.io/pybrisk/spec/</loc>
          <lastmod>2026-03-12</lastmod>
     </url>
     <url>
-         <loc>https://obichan117.github.io/pybrisk/ticker/</loc>
+         <loc>https://obichan117.github.io/pybrisk/api/configuration/</loc>
+         <lastmod>2026-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://obichan117.github.io/pybrisk/api/endpoints/</loc>
+         <lastmod>2026-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://obichan117.github.io/pybrisk/api/market/</loc>
+         <lastmod>2026-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://obichan117.github.io/pybrisk/api/ticker/</loc>
+         <lastmod>2026-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://obichan117.github.io/pybrisk/guide/authentication/</loc>
          <lastmod>2026-03-12</lastmod>
     </url>
     <url>
