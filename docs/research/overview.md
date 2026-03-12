@@ -31,7 +31,15 @@ Browser-based real-time full order book viewer by ArGentumCode K.K. (HFT firm sp
 
 ## Research Files
 
+Start here:
+
+- [**How It Works**](./how-it-works.md) — Layered explanation from "what is this" to "how the binary protocol works", in increasing complexity
+
+Reference docs:
+
+- [Architecture & Data Pipeline](./architecture.md) — System diagrams, feature matrix, scripts reference
 - [API Endpoints](./api-endpoints.md) — All discovered REST/WebSocket/gRPC endpoints
 - [Authentication](./authentication.md) — Session flow, tokens, auth mechanism
 - [Data Schemas](./data-schemas.md) — Response body structures for every endpoint
 - [Data Flow](./data-flow.md) — Request sequence, dependencies, encoding conventions
+- [WebSocket Protocol](./websocket_protocol.md) — Binary protocol deep dive, WASM analysis, frame format

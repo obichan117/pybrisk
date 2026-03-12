@@ -25,6 +25,15 @@ nav:
   - Market API: market.md
   - Configuration: configuration.md
   - Backend Endpoints: endpoints.md
+  - Research:
+    - How It Works: research/how-it-works.md
+    - Architecture: research/architecture.md
+    - Overview: research/overview.md
+    - API Endpoints: research/api-endpoints.md
+    - Authentication: research/authentication.md
+    - Data Schemas: research/data-schemas.md
+    - Data Flow: research/data-flow.md
+    - WebSocket Protocol: research/websocket_protocol.md
 
 markdown_extensions:
   - pymdownx.highlight

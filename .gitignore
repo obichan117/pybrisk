@@ -11,3 +11,15 @@ htmlcov/
 site/
 *.har
 .env
+
+# Research capture data (large/binary files)
+docs/research/ws_frames/*.bin
+docs/research/ws_frames/*.wasm
+docs/research/ws_frames/*.png
+docs/research/ws_frames/*.txt
+docs/research/ws_frames/*.py
+docs/research/ws_frames/fita_wasm.js
+docs/research/ws_frames/capture_summary.json
+docs/research/ws_frames/ptr_to_issue_id.json
+docs/research/ws_frames/playwright_debug.json
+docs/research/ws_frames/connection_debug.json
