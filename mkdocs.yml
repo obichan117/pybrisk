@@ -20,11 +20,13 @@ theme:
 
 nav:
   - Home: index.md
-  - Authentication: authentication.md
-  - Ticker API: ticker.md
-  - Market API: market.md
-  - Configuration: configuration.md
-  - Backend Endpoints: endpoints.md
+  - Guide:
+    - Authentication: guide/authentication.md
+  - API Reference:
+    - Ticker: api/ticker.md
+    - Market: api/market.md
+    - Configuration: api/configuration.md
+    - Backend Endpoints: api/endpoints.md
   - Research:
     - How It Works: research/how-it-works.md
     - Architecture: research/architecture.md

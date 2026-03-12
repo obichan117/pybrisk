@@ -1,51 +1,53 @@
 # pybrisk
 
-Python client for [SBI BRiSK](https://www.brisk.jp/) market data. Access OHLC candles, margin lending, market alerts, and stock universe data for all TSE-listed securities from Python.
+Python client for [SBI BRiSK](https://www.brisk.jp/) market data — OHLC, margin lending, alerts, and stock info for all TSE-listed securities.
 
-## What data can you get?
+## What is BRiSK?
 
-| Data | Method | Description |
-|---|---|---|
-| OHLC candles | `Ticker.ohlc()` | 5-min, daily, weekly, monthly price data |
-| Margin lending | `Ticker.jsfc()` | JSFC lending/borrowing shares, 逆日歩 fees |
-| Stock universe | `Market.stocks_info()` | Turnover + shares outstanding for ~4,500 stocks |
-| Stock lists | `Market.stock_lists()` | Nikkei 225 constituents, recent IPOs |
-| Market alerts | `Market.alerts()` | Basket orders, limit up/down, volume surges |
-| Trading schedule | `Market.schedule()` | Session times, market status |
-| Watchlist | `Market.watchlist()` | Your saved stock codes |
+BRiSK is a browser-based, real-time full order book viewer by [ArGentumCode](https://www.argentumcode.co.jp/) for all ~4,400 Tokyo Stock Exchange stocks. It's offered through SBI Securities and other Japanese brokers.
 
-## Installation
+**pybrisk** wraps BRiSK's internal API so you can access this data from Python.
+
+## Quick Start
 
 ```bash
 pip install pybrisk
 ```
 
-For automated browser login (optional):
-
-```bash
-pip install 'pybrisk[browser]'
-```
-
-## Quick Start
-
 ```python
 import pybrisk as pb
 
-# Authenticate (see Authentication page for details)
 pb.login(cookies={"session_xxx": "v2.local.xxx"})
 
-# Per-stock data
-ticker = pb.Ticker("7203")  # Toyota
-df = ticker.ohlc()           # Daily OHLC DataFrame
-margin = ticker.jsfc()       # Margin lending data
+ticker = pb.Ticker("7203")       # Toyota
+df = ticker.ohlc()               # Daily OHLC candles
+margin = ticker.jsfc()           # Margin lending data
 
-# Market-wide data
 market = pb.Market()
-info = market.stocks_info()  # All ~4,500 TSE stocks
+info = market.stocks_info()      # All ~4,500 TSE stocks
+alerts = market.alerts()         # Market condition events
 ```
+
+See [Authentication](guide/authentication.md) for login options.
+
+## Available Data
+
+| Method | Data | Returns |
+|---|---|---|
+| `Ticker(code).ohlc(interval)` | OHLC candles (5m / 1d / 1w / 1mo) | DataFrame |
+| `Ticker(code).jsfc(count)` | Margin lending from JSFC | DataFrame |
+| `Market().stocks_info()` | Turnover + outstanding shares for all stocks | DataFrame |
+| `Market().stock_lists()` | Nikkei 225, recent IPOs | dict |
+| `Market().alerts()` | Basket orders, limit up/down, volume surges | DataFrame |
+| `Market().schedule()` | Trading session times and status | dict |
+| `Market().watchlist()` | User's saved stock codes | list |
 
 ## Requirements
 
 - Python 3.10+
-- Active SBI Securities account with BRiSK (全板) subscription
+- SBI Securities account with BRiSK subscription (330 yen/month or free with qualifying account)
 - Service hours: 8:00 AM – 3:50 PM JST
+
+## What's Coming
+
+Real-time WebSocket streaming is in progress — see [How It Works](research/how-it-works.md) for details on the binary protocol reverse-engineering effort.
