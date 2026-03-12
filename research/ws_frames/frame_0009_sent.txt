@@ -1,0 +1,1 @@
+42/v2/user,["userEvent",{"name":"startLive","data":{"isRemoteInputExcluded":false}}]

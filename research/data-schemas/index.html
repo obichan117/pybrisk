@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python client for SBI BRiSK market data">
+      
+      
+      
+        <link rel="canonical" href="https://obichan117.github.io/pybrisk/research/data-schemas/">
+      
+      
+        <link rel="prev" href="../authentication/">
+      
+      
+        <link rel="next" href="../data-flow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Data Schemas - pybrisk</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#brisk-data-schemas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="pybrisk" class="md-header__button md-logo" aria-label="pybrisk" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pybrisk
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Schemas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/obichan117/pybrisk" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    obichan117/pybrisk
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pybrisk" class="md-nav__button md-logo" aria-label="pybrisk" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pybrisk
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/obichan117/pybrisk" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    obichan117/pybrisk
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ticker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ticker API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How It Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Schemas
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apifrontendboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/frontend/boot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiappboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/app/boot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apistocks_infodateyyyy-mm-dd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/stocks_info?date=YYYY-MM-DD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apistock_listsdateyyyy-mm-dd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/stock_lists?date=YYYY-MM-DD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiohlcissue_codedateyyyy-mm-dd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/ohlc/{issue_code}?date=YYYY-MM-DD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apijsfcissue_codecountn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/jsfc/{issue_code}?count=N
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apimarketsdateseries0index_from0index_to618" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/markets?date=...&amp;series=0&amp;index_from=0&amp;index_to=618
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apifrontendwatchlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/frontend/watchlist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiappmarket-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/app/market-token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delta-update-request-stocks_update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delta Update Request (stocks_update)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../websocket_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apifrontendboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/frontend/boot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiappboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/app/boot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apistocks_infodateyyyy-mm-dd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/stocks_info?date=YYYY-MM-DD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apistock_listsdateyyyy-mm-dd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/stock_lists?date=YYYY-MM-DD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiohlcissue_codedateyyyy-mm-dd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/ohlc/{issue_code}?date=YYYY-MM-DD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apijsfcissue_codecountn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/jsfc/{issue_code}?count=N
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apimarketsdateseries0index_from0index_to618" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/markets?date=...&amp;series=0&amp;index_from=0&amp;index_to=618
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apifrontendwatchlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/frontend/watchlist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiappmarket-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /api/app/market-token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delta-update-request-stocks_update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delta Update Request (stocks_update)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="brisk-data-schemas">BRiSK Data Schemas</h1>
+<h2 id="apifrontendboot"><code>/api/frontend/boot</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-v4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-hex-64chars&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;csrf_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-hex-64chars&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;api_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.local.{PASETO}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;api_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.brisk.jp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;api_local_prefer&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;md5-hex-32chars&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://site0.sbisec.co.jp/...&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;news_revision&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;session_expires&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773259200</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chart_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chart_origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tfx_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.local.{PASETO}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tfx_api_base_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://tfx-api.brisk.jp&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="apiappboot"><code>/api/app/boot</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;series&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-11&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;session_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ws_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/realtime/0?session={hex}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;master&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-hex&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;snapshot&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{hash}-{date}-{series}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773193002</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;session_expires&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;next_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1773270000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;base_prices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;exceptional_sq&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;flex_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;schedule_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;morning_session_pre_open_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">28800000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;morning_session_open_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32400000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;morning_session_close_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">41400000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;afternoon_session_pre_open_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">43500000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;afternoon_session_open_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45000000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;afternoon_session_pre_close_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55500000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;afternoon_session_close_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55800000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sq_jump_interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Schedule times are in <strong>nanoseconds from midnight</strong> JST.</p>
+<h2 id="apistocks_infodateyyyy-mm-dd"><code>/api/stocks_info?date=YYYY-MM-DD</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;issue_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4169&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;turnover&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27063800</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;calc_shares_outstanding&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42834528</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>~3800+ items (all TSE stocks).</p>
+<h2 id="apistock_listsdateyyyy-mm-dd"><code>/api/stock_lists?date=YYYY-MM-DD</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stock_lists&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ipo3month&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;直近IPO&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issue_codes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;509A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;511A&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nk225etf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;日経225構成銘柄&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issue_codes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;1332&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1333&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="apiohlcissue_codedateyyyy-mm-dd"><code>/api/ohlc/{issue_code}?date=YYYY-MM-DD</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ohlc5min&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-09&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;diff&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;open_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4610</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;high_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4640</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;low_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4600</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;close_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4635</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;turnover&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">687492500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;open_turnover&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">444404000</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;ohlc1day&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-16&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;open_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;high_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3205</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;low_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3035</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;close_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3050</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;turnover&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6797321000</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;ohlc1week&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;year&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;week&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;open_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">605</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;high_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">641</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;low_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">602</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;close_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">620</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;turnover&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3327362200</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;ohlc1month&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;year&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;month&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;open_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">964</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;high_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">968</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;low_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">757</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;close_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;turnover&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8975884900</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Prices are in <strong>yen (integer, no decimals for stocks)</strong>.</p>
+<h2 id="apijsfcissue_codecountn"><code>/api/jsfc/{issue_code}?count=N</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;2025-03-11&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-11&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sochi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kakuhoLongShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">543700</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kakuhoShortShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">622400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sokuhoLongShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">467400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sokuhoShortShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">622400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;standardizedLongShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;standardizedShortShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gyakuhibuFee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gyakuhibuFeePercent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00224115</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gyakuhibuFeeDayCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gyakuhibuMaxFee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.6</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Map keyed by date string.</p>
+<h2 id="apimarketsdateseries0index_from0index_to618"><code>/api/markets?date=...&amp;series=0&amp;index_from=0&amp;index_to=618</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;market_conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;diff_bps_from_last&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issue_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3655&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;price10&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">26910</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:00:00.048598&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value10&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2691000000</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>price10</code>: price × 10 (26910 = 2691.0 yen)</li>
+<li><code>value10</code>: value × 10</li>
+<li><code>time</code>: microsecond precision</li>
+<li>Paginated via <code>index_from</code>/<code>index_to</code></li>
+</ul>
+<h2 id="apifrontendwatchlist"><code>/api/frontend/watchlist</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;empty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;uuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-v4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;base64+zlib-compressed-string&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="apiappmarket-token"><code>/api/app/market-token</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.local.{PASETO}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="binary-endpoints">Binary Endpoints</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Format</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/master/{hash}</code></td>
+<td>Custom binary</td>
+<td>~800KB</td>
+</tr>
+<tr>
+<td><code>/api/snapshot/{hash}</code></td>
+<td>Custom binary</td>
+<td>~29MB</td>
+</tr>
+<tr>
+<td><code>/api/stocks_update/{series}</code></td>
+<td>Custom binary</td>
+<td>~227KB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="delta-update-request-stocks_update">Delta Update Request (<code>stocks_update</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;issue_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;update_numbers_from&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3678</span><span class="p">,</span><span class="w"> </span><span class="mi">42262</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;update_numbers_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3680</span><span class="p">,</span><span class="w"> </span><span class="mi">42267</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Parallel arrays: issue_ids[i] → from[i]..to[i] sequence range.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
